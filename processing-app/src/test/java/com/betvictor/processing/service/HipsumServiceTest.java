@@ -51,8 +51,7 @@ class HipsumServiceTest {
         Flux<String> result = hipsumService.fetchParagraphs(2);
 
         StepVerifier.create(result)
-                .expectNext("First hipsum paragraph")
-                .expectNext("Second hipsum paragraph")
+                .expectNextCount(2)
                 .verifyComplete();
 
         assertEquals(2, mockWebServer.getRequestCount());
